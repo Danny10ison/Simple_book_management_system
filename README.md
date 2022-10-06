@@ -1,5 +1,5 @@
 # Simple_book_management_system
-This is a project composed mainly of fastapi and HTMX using postgres as the database. The purpose of this project is to illustrate how I create a simple website plus CRUD functionalities with no JavaScript, using only HTML, CSS, and Python. HTMX is a plugin that allows this to be possible.
+This is a project of fastapi and HTMX using postgres as the database. The purpose of this project is to illustrate how I create a simple website plus CRUD functionalities with no JavaScript, using only HTML, CSS, and Python. HTMX is a plugin that allows this to be possible.
 
 # HTMX Attributes
 
