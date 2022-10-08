@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>hello</title>
+    <title>Book system</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- HTMX -->
     <script src="https://unpkg.com/htmx.org@1.5.0"></script>
@@ -29,7 +29,8 @@
 
 <body>
     <h1 class = "text-center " >Book Management System</h1>
-    <h5 class = "text-left mb-2" >Input details of book you want to add below</h5>
+    <h3 class = "text-left mb-2" >Input details of book you want to add below</h3>
+    <h6>Note that id must be unique</h6>
 
     <form hx-post="/submit/" hx-swap="beforeend" hx-target="#new-book" class="mb-3">
         <input type="text" placeholder="Book ID" name="id" class="form-control mb-3" />
