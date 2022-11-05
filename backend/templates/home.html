@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Book system</title>
+    <title>Homepage</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- HTMX -->
     <script src="https://unpkg.com/htmx.org@1.5.0"></script>
@@ -25,19 +25,30 @@
             background-color: #dddddd;
         }
     </style>
+    <link rel="icon" href="{{url_for('static', path='/favicon.ico')}}">
 </head>
 
 <body>
+    <button class="btn btn-primary fixed-bottom" hx-get="/signout" hx-target="body" hx-swap="innerHTML">Logout</button>
     <h1 class = "text-center " >Book Management System</h1>
     <h3 class = "text-left mb-2" >Input details of book you want to add below</h3>
     <h6>Note that id must be unique</h6>
-
-    <form hx-post="/submit/" hx-swap="beforeend" hx-target="#new-book" class="mb-3">
+    {%if msg%}
+<div class="alert alert-success d-flex align-items-center" role="alert">
+  {{msg}}
+</div>
+{%endif%}
+{% for error in errors %}
+<div class="alert alert-danger d-flex align-items-center" role="alert">
+  {{error}}
+</div>
+{% endfor %}
+    <form action="/submit" method="post" class="mb-3">
         <input type="text" placeholder="Book ID" name="id" class="form-control mb-3" />
         <input type="text" placeholder="Book Title" name="title" class="form-control mb-3" />
         <input type="text" placeholder="Book Author" name="author" class="form-control mb-3" />
         <input type="text" placeholder="Year published" name="year_published" class="form-control mb-3" />
-        <button type="post" class="btn btn-primary" action="/submit/">Submit</button>
+        <button class="btn btn-primary" >Submit</button>
     </form>
      
     <table class="table">
@@ -49,7 +60,7 @@
             <th scope="col">Year Published</th>
           </tr>
         </thead>
-        <tbody id="new-book"> 
+        <tbody > 
             
             {%for book in book_db %}
             <tr>
@@ -58,19 +69,16 @@
                 <td>{{book.author}}</td>
                 <td>{{book.year_published}}</td>
                 <td>
-
-                    <button hx-get="edit_details/{{book.id}}" hx-trigger="click"
-                    hx-target="body"
-                    hx-swap="/index/" class="btn btn-primary">
+                    <button
+                    hx-get = "/edit_details/{{book.id}}"
+                    hx-target="body" hx-swap="outerHTML"
+                      class="btn btn-primary">
                         Edit Details
                     </button>
                 </td>
                 <td>
-                    <button hx-delete = "/delete/{{book.id}}"
-                    hx-trigger="click"
-                    hx-target="closest tr"
-                    hx-swap="outerHTML" class="btn btn-primary">Delete
-                    </button>
+                    <button class="btn btn-primary"  hx-delete = "/delete/{{book.id}}"
+                    hx-target="closest tr" hx-swap="outerHTML" hx-trigger = "click"> Delete </button>
                 </td>
             </tr>
             {%endfor%}
