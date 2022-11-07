@@ -18,7 +18,7 @@ def authenticate_user(username: str, password: str):
     user_exist = userDb.query(User).filter(User.username == username).first()
     if user_exist is not None:
         if not verify_password(password, user_exist.password):
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED)
+            return False
         else:
             return True
     else:
