@@ -1,5 +1,5 @@
 # Simple_book_management_system
-This is a project of fastapi and HTMX using postgres as the database. The purpose of this project is to illustrate how I create a simple website plus CRUD functionalities with no JavaScript, using only HTML, CSS, and Python. HTMX is a plugin that allows this to be possible.
+This is a project consisting mainly of fastapi,HTMX  and docker using postgres as the database. The purpose of this project is to demonstrate some of my backend capabilities in building web applications. This project illustrate a wide range of functionalities including authentication and authorization, CRUD functionalities, database creation and operations and also dockerization.
 
 # HTMX Attributes
 
@@ -21,20 +21,38 @@ hx-swap  -- It specifies how to load the response.
 
 
 #  Structure
+My work folder is the backend which is structured as follows:
 
 database - Database setup
 
 models - Data models
 
-templates - Contains the main webpage which is the index.html 
+templates - Contains my website templates
 
-main.py - Main operational file for running FastAPI.
+routers - Contains my api routes
+
+static - Contains the favicon.ico file
+
+main.py - Main operational file for running the FastAPI application
+
+configure.py - Contain my application configurations
 
 # How to run
-Create virtual environment
+Basically there are two ways of running this application. 
 
-Activate virtual environment
+**RUNNING WITH DOCKER(Main)**
+NB: One must have docker installed and make sure docker is running
 
-Install requirements pip3 install -r requirements.txt
+- Configure your postgres database configuration. Also make sure you use the name of the postgres database image(db) as your postgres_host
+- In the Simple_book_management_system directory run docker-compose up -d or docker-compose up --build inorder to build and run your application
 
-Run project python3 -m uvicorn main:app --reload
+**RUNNING WITHOUT DOCKER(Alternative)**
+-Ensure that the postgres database configuration setting postgres_host must be localhost
+
+-Create virtual environment
+
+-Activate virtual environment
+
+-Install requirements by running pip3 install -r requirements.txt
+
+-Navigate into the backend directory and run uvicorn main:app --reload
