@@ -1,6 +1,11 @@
 # Simple_book_management_system
 This is a project consisting mainly of fastapi,HTMX  and docker using postgres as the database. The purpose of this project is to demonstrate some of my backend capabilities in building web applications. This project illustrate a wide range of functionalities including authentication and authorization, CRUD functionalities, database creation and operations and also dockerization.
 
+**Below is a link to see how my project looks like:**
+
+https://youtu.be/3BjRCoehLvA
+
+
 # HTMX Attributes
 
 The following HTMX attributes are used in this project:
